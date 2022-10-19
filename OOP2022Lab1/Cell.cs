@@ -27,10 +27,56 @@ namespace OOP2022Lab1
             int scopeStart = 0;
             int scopeEnd = proposed_formula.Length - 1;
             //(((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))
-            while (proposed_formula[scopeStart] == '(' && proposed_formula[scopeEnd] == ')')
+            for (int i = scopeStart; i <= scopeEnd; i++)
             {
-                ++scopeStart;
-                --scopeEnd;
+                if (proposed_formula[i] == '(')
+                {
+                    ++correctScope;
+                }
+                if (proposed_formula[i] == ')')
+                {
+                    --correctScope;
+                    if (correctScope < 0)
+                    {
+                        return new ErrorValue(ErrorValue.ErrorCode.PARENTHESES);
+                    }
+                }
+            }
+            if (correctScope != 0)
+            {
+                return new ErrorValue(ErrorValue.ErrorCode.PARENTHESES);
+            }
+            bool correctScopeCrossing0 = false;
+            while (!correctScopeCrossing0 && proposed_formula[scopeStart] == '(' && proposed_formula[scopeEnd] == ')')
+            {
+                for(int i = scopeStart; i <= scopeEnd; i++)
+                {
+                    if (proposed_formula[i] == '(')
+                    {
+                        ++correctScope;
+                    }
+                    if (proposed_formula[i] == ')')
+                    {
+                        --correctScope;
+                        if (correctScope < 0)
+                        {
+                            return new ErrorValue(ErrorValue.ErrorCode.PARENTHESES);
+                        }
+                        if (correctScope == 0 && i != scopeEnd)
+                        {
+                            correctScopeCrossing0 = true;
+                        }
+                    }
+                }
+                if (correctScope != 0)
+                {
+                    return new ErrorValue(ErrorValue.ErrorCode.PARENTHESES);
+                }
+                if (!correctScopeCrossing0)
+                {
+                    ++scopeStart;
+                    --scopeEnd;
+                }
             }
             //div()div()div()div()div()div()  mod()mod()mod()mod()mod()mod()
             if (scopeEnd - scopeStart >= 7)
@@ -42,7 +88,7 @@ namespace OOP2022Lab1
                     --scopeEnd;
                     for (int i = scopeStart; i < scopeEnd; i++)
                     {
-                        if (proposed_formula[i] == ')')
+                        if (proposed_formula[i] == '(')
                         {
                             ++correctScope;
                         }
@@ -57,15 +103,7 @@ namespace OOP2022Lab1
                         if (proposed_formula[i] == ')')
                         {
                             --correctScope;
-                            if (correctScope < 0)
-                            {
-                                return new ErrorValue(ErrorValue.ErrorCode.PARENTHESES);
-                            }
                         }
-                    }
-                    if (correctScope > 0)
-                    {
-                        return new ErrorValue(ErrorValue.ErrorCode.PARENTHESES);
                     }
                 }
                 //mod()mod()mod()mod()mod()mod()
@@ -75,7 +113,7 @@ namespace OOP2022Lab1
                     --scopeEnd;
                     for (int i = scopeStart; i < scopeEnd; i++)
                     {
-                        if (proposed_formula[i] == ')')
+                        if (proposed_formula[i] == '(')
                         {
                             ++correctScope;
                         }
@@ -90,15 +128,7 @@ namespace OOP2022Lab1
                         if (proposed_formula[i] == ')')
                         {
                             --correctScope;
-                            if (correctScope < 0)
-                            {
-                                return new ErrorValue(ErrorValue.ErrorCode.PARENTHESES);
-                            }
                         }
-                    }
-                    if (correctScope > 0)
-                    {
-                        return new ErrorValue(ErrorValue.ErrorCode.PARENTHESES);
                     }
                 }
             }
@@ -129,7 +159,7 @@ namespace OOP2022Lab1
             //++++++++++++++++++++++++++++++++--------------------------------
             for (int i = scopeStart; i < scopeEnd; i++)
             {
-                if(proposed_formula[i] == ')')
+                if(proposed_formula[i] == '(')
                 {
                     ++correctScope;
                 }
@@ -154,20 +184,13 @@ namespace OOP2022Lab1
                 if (proposed_formula[i] == ')')
                 {
                     --correctScope;
-                    if (correctScope < 0)
-                    {
-                        return new ErrorValue(ErrorValue.ErrorCode.PARENTHESES);
-                    }
                 }    
             }
-            if (correctScope > 0)
-            {
-                return new ErrorValue(ErrorValue.ErrorCode.PARENTHESES);
-            }
+            correctScope = 0;
             //********************************////////////////////////////////
             for (int i = scopeStart; i < scopeEnd; i++)
             {
-                if (proposed_formula[i] == ')')
+                if (proposed_formula[i] == '(')
                 {
                     ++correctScope;
                 }
@@ -192,20 +215,13 @@ namespace OOP2022Lab1
                 if (proposed_formula[i] == ')')
                 {
                     --correctScope;
-                    if (correctScope < 0)
-                    {
-                        return new ErrorValue(ErrorValue.ErrorCode.PARENTHESES);
-                    }
                 }
             }
-            if (correctScope > 0)
-            {
-                return new ErrorValue(ErrorValue.ErrorCode.PARENTHESES);
-            }
+            correctScope = 0;
             //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
             for (int i = scopeStart; i < scopeEnd; i++)
             {
-                if (proposed_formula[i] == ')')
+                if (proposed_formula[i] == '(')
                 {
                     ++correctScope;
                 }
@@ -220,15 +236,7 @@ namespace OOP2022Lab1
                 if (proposed_formula[i] == ')')
                 {
                     --correctScope;
-                    if (correctScope < 0)
-                    {
-                        return new ErrorValue(ErrorValue.ErrorCode.PARENTHESES);
-                    }
                 }
-            }
-            if (correctScope > 0)
-            {
-                return new ErrorValue(ErrorValue.ErrorCode.PARENTHESES);
             }
             // To number, to cell reference or return an error;
             var num = CellValue.toNumberValue(proposed_formula.Substring(scopeStart, scopeEnd - scopeStart + 1));

@@ -108,7 +108,6 @@ namespace OOP2022Lab1
                     this.textBoxes[row, col].Name = "textBoxes";
                     this.textBoxes[row, col].Size = new System.Drawing.Size(150, 35);
                     this.textBoxes[row, col].TabIndex = 0;
-                    this.textBoxes[row, col].TextChanged += new System.EventHandler(this.textBox_TextChanged);
                     this.CellPairs[row, col] = new CellPair();
                     this.CellPairs[row, col].box = textBoxes[row, col];
                     this.CellPairs[row, col].tiedCell = Table.getCell(row, col);
