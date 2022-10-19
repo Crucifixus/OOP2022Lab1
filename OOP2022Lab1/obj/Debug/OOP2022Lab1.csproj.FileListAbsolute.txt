@@ -1,0 +1,11 @@
+C:\Users\Тарас\source\repos\OOP2022Lab1\OOP2022Lab1\obj\Debug\OOP2022Lab1.csproj.AssemblyReference.cache
+C:\Users\Тарас\source\repos\OOP2022Lab1\OOP2022Lab1\obj\Debug\OOP2022Lab1.csproj.SuggestedBindingRedirects.cache
+C:\Users\Тарас\source\repos\OOP2022Lab1\OOP2022Lab1\bin\Debug\OOP2022Lab1.exe.config
+C:\Users\Тарас\source\repos\OOP2022Lab1\OOP2022Lab1\bin\Debug\OOP2022Lab1.exe
+C:\Users\Тарас\source\repos\OOP2022Lab1\OOP2022Lab1\bin\Debug\OOP2022Lab1.pdb
+C:\Users\Тарас\source\repos\OOP2022Lab1\OOP2022Lab1\obj\Debug\OOP2022Lab1.Form.resources
+C:\Users\Тарас\source\repos\OOP2022Lab1\OOP2022Lab1\obj\Debug\OOP2022Lab1.Properties.Resources.resources
+C:\Users\Тарас\source\repos\OOP2022Lab1\OOP2022Lab1\obj\Debug\OOP2022Lab1.csproj.GenerateResource.cache
+C:\Users\Тарас\source\repos\OOP2022Lab1\OOP2022Lab1\obj\Debug\OOP2022Lab1.csproj.CoreCompileInputs.cache
+C:\Users\Тарас\source\repos\OOP2022Lab1\OOP2022Lab1\obj\Debug\OOP2022Lab1.exe
+C:\Users\Тарас\source\repos\OOP2022Lab1\OOP2022Lab1\obj\Debug\OOP2022Lab1.pdb
