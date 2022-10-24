@@ -40,8 +40,12 @@ namespace OOP2022Lab1
         {
             if (s.Length == 2)
             {
-                int col = s[0] - 65;
-                int row = s[1] - 48;
+                int col = s[0] - 'A';
+                if (col >= 992 && col < 1002)
+                {
+                    return new ErrorValue(ErrorValue.ErrorCode.CYRILLIC);
+                }
+                int row = s[1] - '0';
                 if(col >= 0 && col < 10 && row >= 0 && row < 10)
                 {
                     return Table.getCell((uint)row, (uint)col).calculate();

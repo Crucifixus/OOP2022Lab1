@@ -9,3 +9,4 @@ C:\Users\Тарас\source\repos\OOP2022Lab1\OOP2022Lab1\obj\Debug\OOP2022Lab1.c
 C:\Users\Тарас\source\repos\OOP2022Lab1\OOP2022Lab1\obj\Debug\OOP2022Lab1.csproj.CoreCompileInputs.cache
 C:\Users\Тарас\source\repos\OOP2022Lab1\OOP2022Lab1\obj\Debug\OOP2022Lab1.exe
 C:\Users\Тарас\source\repos\OOP2022Lab1\OOP2022Lab1\obj\Debug\OOP2022Lab1.pdb
+C:\Users\Тарас\source\repos\OOP2022Lab1\OOP2022Lab1\obj\Debug\OOP2022Lab1.AboutBox.resources

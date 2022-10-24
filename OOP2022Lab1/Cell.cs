@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace OOP2022Lab1
 {
@@ -261,6 +262,7 @@ namespace OOP2022Lab1
             {
                 return new ErrorValue(ErrorValue.ErrorCode.REF_CYCLE);
             }
+            formula = Regex.Replace(formula, " ", "");
             if (formula != "")
             {
                 CellValue res;

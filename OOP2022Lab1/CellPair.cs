@@ -8,15 +8,7 @@ namespace OOP2022Lab1
 {
     internal class CellPair
     {
-        public System.Windows.Forms.TextBox box
-        {
-            get;
-            set;
-        }
-        public Cell tiedCell
-        {
-            get;
-            set;
-        }
+        public System.Windows.Forms.TextBox box;
+        public Cell tiedCell;
     }
 }

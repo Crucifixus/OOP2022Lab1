@@ -22,14 +22,30 @@ namespace OOP2022Lab1
         {
             if (lbl_help.Text == "")
             {
-                lbl_help.Text = "Для того щоб порахувати що ви хочете, введіть вирази у клітинки і нажміть \"Значення\".\nКоли ви побачили що хотіли, можете нажати на \"Вирази\" і можете знову вводити вирази.\nРобота тільки з цілими числами, дозволені операції: + - * / ^ div(a, b) mod(a, b) inc(a) dec(a).\nПробіли заборонені, стовпчити позначаються великими літерами латинського алфавіту зліва направо, а рядки від 0 до 9 зверху вниз.";
+                lbl_help.Text = "Для того щоб порахувати що ви хочете, введіть вирази у клітинки і нажміть \"Значення\".\nКоли ви побачили що хотіли, можете нажати на \"Вирази\" і можете знову вводити вирази.\nТакож якщо ви хочете очистити вирази і значенння нажміть на \"Очистити\" і програма верне вас до етапу вводу виразів з пустою таблицею.\nРобота тільки з цілими числами, дозволені операції: + - * / ^ div(a, b) mod(a, b) inc(a) dec(a).\nТакож можна посилатись на інші клітинки, \"D2\" позначає клітинку 4-го стовпчику(D), 3-го рядку(бо від 0).";
             }
             else
             {
                 lbl_help.Text = "";
             }
         }
-
+        private void btn_about_Click(object sender, EventArgs e)
+        {
+            AboutBox info = new AboutBox();
+            info.ShowDialog();
+        }
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 100; ++i)
+            {
+                var currentPair = CellPairs[i / 10, i % 10];
+                currentPair.tiedCell.formula = "";
+                currentPair.tiedCell.state = Cell.CalculationProgress.PENDING;
+                currentPair.tiedCell.value = new ErrorValue(ErrorValue.ErrorCode.EMPTY);
+                currentPair.box.Text = "";       
+            }
+            btn_сalc.Text = "Значення";
+        }
         private void btn_calc_Click(object sender, EventArgs e)
         {
             if (btn_сalc.Text == "Значення")
@@ -41,7 +57,7 @@ namespace OOP2022Lab1
                 }
                 for (int i = 0; i < 100; ++i)
                 {
-                    //error processing and output may be cringe
+                    //error processing
                     CellPair currentPair = CellPairs[i / 10, i % 10];
                     CellValue temp = currentPair.tiedCell.calculate();
                     var val = temp as NumberValue;
@@ -78,6 +94,9 @@ namespace OOP2022Lab1
                                 case ErrorValue.ErrorCode.VALUE:
                                     currentPair.box.Text = "VALUE ERROR (STRING)";
                                     break;
+                                case ErrorValue.ErrorCode.CYRILLIC:
+                                    currentPair.box.Text = "CYRILLIC LETTERS";
+                                    break;
                                 case ErrorValue.ErrorCode.PARENTHESES:
                                     currentPair.box.Text = "INCORRECT PARENTHESES";
                                     break;
@@ -92,10 +111,9 @@ namespace OOP2022Lab1
                 for (int i = 0; i < 100; ++i)
                 {
                     var currentPair = CellPairs[i / 10, i % 10];
-                    currentPair.tiedCell.formula = "";
                     currentPair.tiedCell.state = Cell.CalculationProgress.PENDING;
                     currentPair.tiedCell.value = new ErrorValue(ErrorValue.ErrorCode.EMPTY);
-                    currentPair.box.Text = "";
+                    currentPair.box.Text = currentPair.tiedCell.formula;
                 }
                 btn_сalc.Text = "Значення";
             }

@@ -15,16 +15,16 @@ namespace OOP2022Lab1
             var lNumber = lCV as NumberValue;
             var rNumber = rCV as NumberValue;
 
-            if (lNumber != null && rNumber != null)
-            {
-                return new NumberValue(lNumber.number + rNumber.number);
-            }
             if (lNumber != null)
             {
+                if (rNumber != null)
+                {
+                    return new NumberValue(lNumber.number + rNumber.number);
+                }
                 return rCV;
             }
             var lError = lCV as ErrorValue;
-            if (lNumber == null && lError.code == ErrorValue.ErrorCode.EMPTY)
+            if (rNumber != null && lError != null && lError.code == ErrorValue.ErrorCode.EMPTY)
             {
                 return new NumberValue(rNumber.number);
             }
